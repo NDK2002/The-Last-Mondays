@@ -12,26 +12,41 @@
 
 <body class="flex items-center justify-center min-h-screen relative bg-slate-900 text-white">
 
+    <!-- Ambient glowing orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
     <div id="particles"></div>
 
-    <div class="glass p-12 rounded-3xl shadow-2xl text-center max-w-md w-full relative z-10 mx-4">
-        <h1 class="text-xl font-light text-slate-300 mb-2 tracking-wide">Số ngày Thứ Hai còn lại</h1>
-        <div id="year-label" class="text-sm font-bold text-blue-400 uppercase tracking-widest mb-6 opacity-80">...</div>
+    <div class="glass-wrapper w-full max-w-md mx-4 relative z-10 flex justify-center">
+        <div class="glass p-12 rounded-3xl shadow-2xl text-center w-full relative preserve-3d">
+            <h1 class="stagger-1 text-xl font-light text-slate-300 mb-2 tracking-wide" style="--z-depth: 20px;">Số ngày
+                Thứ Hai còn lại</h1>
+            <div id="year-label"
+                class="stagger-2 text-sm font-bold text-blue-400 uppercase tracking-widest mb-6 opacity-80"
+                style="--z-depth: 25px;">...</div>
 
-        <div id="monday-count" class="text-9xl font-black text-white mb-8 number-glow">00</div>
+            <div class="stagger-3 pb-4" style="--z-depth: 60px;">
+                <div id="monday-count" class="text-9xl font-black text-white mb-4 number-glow">00</div>
+            </div>
 
-        <div class="relative max-w-[280px] mx-auto mb-2">
-            <span class="text-4xl text-blue-500 opacity-40 absolute -top-4 -left-6 font-serif">"</span>
-            <p class="text-slate-300 italic text-sm opacity-90 leading-relaxed relative z-10">
-                Mỗi ngày Thứ Hai là một cơ hội mới để bắt đầu lại.
-            </p>
-            <span class="text-4xl text-blue-500 opacity-40 absolute -bottom-6 -right-6 font-serif">"</span>
-        </div>
+            <div class="stagger-4 relative max-w-[280px] mx-auto mb-2 mt-4" style="--z-depth: 35px;">
+                <span class="text-4xl text-blue-500 opacity-40 absolute -top-4 -left-6 font-serif"
+                    style="transform: translateZ(15px); display: inline-block;">"</span>
+                <p class="text-slate-300 italic text-sm opacity-90 leading-relaxed relative z-10 drop-shadow-lg">
+                    Mỗi ngày Thứ Hai là một cơ hội mới để bắt đầu lại.
+                </p>
+                <span class="text-4xl text-blue-500 opacity-40 absolute -bottom-6 -right-6 font-serif"
+                    style="transform: translateZ(15px); display: inline-block;">"</span>
+            </div>
 
-        <div
-            class="mt-10 pt-6 border-t border-slate-700/50 text-xs text-slate-400 tracking-wider font-light flex items-center justify-center gap-2">
-            <span class="w-2 h-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]"></span>
-            Đếm ngược thời gian | Trân trọng từng khoảnh khắc
+            <div class="stagger-5 mt-10 pt-6 border-t border-slate-700/50 text-xs text-slate-400 tracking-wider font-light flex items-center justify-center gap-2"
+                style="--z-depth: 20px;">
+                <span
+                    class="w-2 h-2 rounded-full bg-blue-400 animate-pulse shadow-[0_0_8px_rgba(96,165,250,0.8)]"></span>
+                Đếm ngược thời gian | Trân trọng từng khoảnh khắc
+            </div>
         </div>
     </div>
 

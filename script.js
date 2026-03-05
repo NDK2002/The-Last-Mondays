@@ -73,7 +73,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Start counter animation after a small delay corresponding to the fade-in of the card
     setTimeout(() => {
         animateValue(countElement, 0, data.count, 2500);
-    }, 400);
+    }, 600); // Increased slightly for the new staggered animations
 
     createParticles();
+    initTiltEffect();
 });
+
+function initTiltEffect() {
+    const card = document.querySelector('.glass');
+    let rafId = null;
+
+    document.addEventListener('mousemove', (e) => {
+        if (!card) return;
+        if (window.innerWidth < 768) return; // Disable on small screens layout
+
+        const xAxis = (window.innerWidth / 2 - e.pageX) / 25;
+        const yAxis = (window.innerHeight / 2 - e.pageY) / 25;
+
+        if (rafId) cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+            // Apply 3D tilt
+            card.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg)`;
+        });
+    });
+
+    document.addEventListener('mouseleave', () => {
+        if (!card) return;
+        if (rafId) cancelAnimationFrame(rafId);
+        card.style.transition = 'transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)';
+        card.style.transform = `rotateY(0deg) rotateX(0deg)`;
+
+        setTimeout(() => {
+            card.style.transition = 'transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }, 500);
+    });
+}

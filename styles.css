@@ -46,21 +46,24 @@ body {
     }
 }
 
+.glass-wrapper {
+    animation: float 6s ease-in-out infinite, fadeUp 1s ease-out forwards;
+    perspective: 1000px;
+}
+
 .glass {
     background: rgba(255, 255, 255, 0.03);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease, background 0.4s ease;
-    animation: float 6s ease-in-out infinite, fadeUp 1s ease-out forwards;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+    transition: transform 0.1s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.4s ease, background 0.4s ease;
 }
 
 .glass:hover {
-    transform: translateY(-8px) scale(1.03);
-    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4), inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 @keyframes float {
@@ -116,7 +119,8 @@ body {
 
 .particle {
     position: absolute;
-    background: rgba(255, 255, 255, 0.5);
+    background: radial-gradient(circle, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.1) 100%);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
     border-radius: 50%;
     animation: rise linear infinite;
 }
@@ -139,4 +143,102 @@ body {
         transform: translateY(-10vh) scale(1);
         opacity: 0;
     }
+}
+
+/* --- WOW EFFECTS --- */
+
+/* Ambient Orbs */
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(100px);
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+    animation: drift 20s infinite ease-in-out alternate;
+    mix-blend-mode: color-dodge;
+}
+
+.orb-1 {
+    width: 350px;
+    height: 350px;
+    background: #3b82f6;
+    top: -50px;
+    left: -50px;
+}
+
+.orb-2 {
+    width: 450px;
+    height: 450px;
+    background: #8b5cf6;
+    bottom: -100px;
+    right: -50px;
+    animation-delay: -5s;
+    animation-duration: 25s;
+}
+
+.orb-3 {
+    width: 300px;
+    height: 300px;
+    background: #ec4899;
+    top: 40%;
+    left: 30%;
+    animation-delay: -10s;
+    animation-duration: 22s;
+}
+
+@keyframes drift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(40px, 50px) scale(1.1);
+    }
+
+    100% {
+        transform: translate(-30px, -40px) scale(0.9);
+    }
+}
+
+/* Staggered entry animations */
+.stagger-1 {
+    opacity: 0;
+    animation: fadeUpInner 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+}
+
+.stagger-2 {
+    opacity: 0;
+    animation: fadeUpInner 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.3s forwards;
+}
+
+.stagger-3 {
+    opacity: 0;
+    animation: fadeUpInner 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.5s forwards;
+}
+
+.stagger-4 {
+    opacity: 0;
+    animation: fadeUpInner 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.7s forwards;
+}
+
+.stagger-5 {
+    opacity: 0;
+    animation: fadeUpInner 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.9s forwards;
+}
+
+@keyframes fadeUpInner {
+    0% {
+        opacity: 0;
+        transform: translateY(30px) translateZ(0);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0) translateZ(var(--z-depth, 0px));
+    }
+}
+
+.preserve-3d {
+    transform-style: preserve-3d;
 }
